@@ -5,7 +5,27 @@ import time
 def jandi(name):
     response = driver.page_source
     soup = BeautifulSoup(response, "html.parser")
-    weekday = datetime.today().weekday()-1
+    weekday = datetime.today().weekday()
+    """ weekday = weekday - 1
+    if weekday-1 <= 5:
+        if weekday == 0:
+            element = soup.find("td", {"id": "contribution-day-component-1-51"})
+        elif weekday == 1:
+            element = soup.find("td", {"id": "contribution-day-component-2-51"})
+        elif weekday == 2:
+            element = soup.find("td", {"id": "contribution-day-component-3-51"})
+        elif weekday == 3:
+            element = soup.find("td", {"id": "contribution-day-component-4-51"})
+        elif weekday == 4:
+            element = soup.find("td", {"id": "contribution-day-component-5-51"})
+        elif weekday == 5:
+            element = soup.find("td", {"id": "contribution-day-component-6-51"})
+        elif weekday == 6:
+            element = soup.find("td", {"id": "contribution-day-component-0-51"})
+        else:
+            element = None
+    else:
+        """
     if weekday == 0:
         element = soup.find("td", {"id": "contribution-day-component-1-52"})
     elif weekday == 1:
