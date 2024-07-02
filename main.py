@@ -5,9 +5,10 @@ import time
 def jandi(name):
     response = driver.page_source
     soup = BeautifulSoup(response, "html.parser")
-    weekday = datetime.today().weekday()
-    """ weekday = weekday - 1
-    if weekday-1 <= 5:
+    daybefore = 1
+    weekday = datetime.today().weekday()-daybefore
+    if weekday <= -1:
+        weekday = 7 - daybefore
         if weekday == 0:
             element = soup.find("td", {"id": "contribution-day-component-1-51"})
         elif weekday == 1:
@@ -25,23 +26,22 @@ def jandi(name):
         else:
             element = None
     else:
-        """
-    if weekday == 0:
-        element = soup.find("td", {"id": "contribution-day-component-1-52"})
-    elif weekday == 1:
-        element = soup.find("td", {"id": "contribution-day-component-2-52"})
-    elif weekday == 2:
-        element = soup.find("td", {"id": "contribution-day-component-3-52"})
-    elif weekday == 3:
-        element = soup.find("td", {"id": "contribution-day-component-4-52"})
-    elif weekday == 4:
-        element = soup.find("td", {"id": "contribution-day-component-5-52"})
-    elif weekday == 5:
-        element = soup.find("td", {"id": "contribution-day-component-6-52"})
-    elif weekday == 6:
-        element = soup.find("td", {"id": "contribution-day-component-0-52"})
-    else:
-        element = None
+        if weekday == 0:
+            element = soup.find("td", {"id": "contribution-day-component-1-52"})
+        elif weekday == 1:
+            element = soup.find("td", {"id": "contribution-day-component-2-52"})
+        elif weekday == 2:
+            element = soup.find("td", {"id": "contribution-day-component-3-52"})
+        elif weekday == 3:
+            element = soup.find("td", {"id": "contribution-day-component-4-52"})
+        elif weekday == 4:
+            element = soup.find("td", {"id": "contribution-day-component-5-52"})
+        elif weekday == 5:
+            element = soup.find("td", {"id": "contribution-day-component-6-52"})
+        elif weekday == 6:
+            element = soup.find("td", {"id": "contribution-day-component-0-52"})
+        else:
+            element = None
     data_level = element.get("data-level")
     if data_level == "0":
         print("[벌금] "+name+"님은 커밋을 하지 않았어요.")
