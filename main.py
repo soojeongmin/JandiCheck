@@ -44,7 +44,7 @@ def jandi(name):
             element = None
     data_level = element.get("data-level")
     if data_level == "0":
-        print("[ 벌금 ] "+name+"님은 커밋을 하지 않았어요.")
+        print("[벌금] "+name+"님은 커밋을 하지 않았어요.")
     else:
         print(name+"님은 잔디를 심었습니다.")
 
